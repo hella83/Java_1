@@ -9,12 +9,12 @@ public class MyFunction {
 
     Point p1 = new Point(2,3);
 
-    Point p2 = new Point(6,8);
+    Point p2 = new Point(60,80);
 
     //System.out.println("Расстояние между точками ("  + p1.a + ","+ p1.b+") и ("+ p2.a + ","+ p2.b+") равно: "+distance(p1, p2));
 
-    System.out.println("Расстояние между точками ("  + p1.a + ","+ p1.b+") и ("+ p2.a + ","+ p2.b+") равно: "+p1.distance(p1, p2));
-    System.out.println("Расстояние между точками ("  + p1.a + ","+ p1.b+") и ("+ p2.a + ","+ p2.b+") равно: "+p2.distance(p1, p2));
+    System.out.println("Расстояние между точками ("  + p1.a + ","+ p1.b+") и ("+ p2.a + ","+ p2.b+") равно: "+p1.distance(p2));
+    System.out.println("Расстояние между точками ("  + p1.a + ","+ p1.b+") и ("+ p2.a + ","+ p2.b+") равно: "+p2.distance(p1));
 
   }
 
