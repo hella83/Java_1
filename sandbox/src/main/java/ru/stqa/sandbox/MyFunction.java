@@ -5,6 +5,16 @@ package ru.stqa.sandbox;
  */
 public class MyFunction {
 
+  public static void main(String[] args) {
+
+    Point p1 = new Point(2,3);
+
+    Point p2 = new Point(6,8);
+
+
+    System.out.println("Расстояние между точками = "+distance(p1, p2));
+  }
+
   public static double distance(Point p1, Point p2){
 
     double a = (p2.a - p1.a);
