@@ -11,15 +11,18 @@ public class MyFunction {
 
     Point p2 = new Point(6,8);
 
+    //System.out.println("Расстояние между точками ("  + p1.a + ","+ p1.b+") и ("+ p2.a + ","+ p2.b+") равно: "+distance(p1, p2));
 
-    System.out.println("Расстояние между точками = "+distance(p1, p2));
+    System.out.println("Расстояние между точками ("  + p1.a + ","+ p1.b+") и ("+ p2.a + ","+ p2.b+") равно: "+p1.distance(p1, p2));
+    System.out.println("Расстояние между точками ("  + p1.a + ","+ p1.b+") и ("+ p2.a + ","+ p2.b+") равно: "+p2.distance(p1, p2));
+
   }
 
-  public static double distance(Point p1, Point p2){
+  //public static double distance(Point p1, Point p2){
 
-    double a = (p2.a - p1.a);
-    double b = (p2.b - p1.b);
+    //double a = (p2.a - p1.a);
+    //double b = (p2.b - p1.b);
 
-    return (Math.sqrt(a*a+b*b));
-  }
+    //return (Math.sqrt(a*a+b*b));
+  //}
 }
