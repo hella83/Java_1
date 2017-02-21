@@ -10,7 +10,7 @@ public class ContactCreationTests extends TestBase {
         gotoAddNew();
         fillContactForm(new ContactData("FName1", "LName1", "TestAddress", "TestPhone", "TestMail"));
         submitContactCreation();
-        returnToHomePage();
+        goToHomePage();
     }
 
 }

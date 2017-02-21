@@ -82,7 +82,7 @@ public class TestBase {
       wd.findElement(By.name("selected[]")).click();
   }
 
-  protected void returnToHomePage() {
+  protected void goToHomePage() {
       wd.findElement(By.linkText("home page")).click();
   }
 
