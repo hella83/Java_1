@@ -80,10 +80,11 @@ public class TestBase {
 
   protected void selectGroup() {
       wd.findElement(By.name("selected[]")).click();
+
   }
 
   protected void goToHomePage() {
-      wd.findElement(By.linkText("home page")).click();
+      wd.findElement(By.linkText("home")).click();
   }
 
   protected void submitContactCreation() {
@@ -110,5 +111,13 @@ public class TestBase {
 
   protected void gotoAddNew() {
       wd.findElement(By.linkText("add new")).click();
+  }
+
+  protected void closeAlertWindow() {
+      wd.switchTo().alert().accept();
+  }
+
+  protected void deleteSelectedContact() {
+      wd.findElement(By.xpath("//div[@id='content']/form[2]/div[2]/input")).click();
   }
 }
