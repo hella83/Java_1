@@ -7,10 +7,10 @@ public class ContactCreationTests extends TestBase {
     @Test
     public void testContactCreation() {
 
-        gotoAddNew();
-        fillContactForm(new ContactData("FName1", "LName1", "TestAddress", "TestPhone", "TestMail"));
-        submitContactCreation();
-        goToHomePage();
+        app.gotoAddNew();
+        app.fillContactForm(new ContactData("FName1", "LName1", "TestAddress", "TestPhone", "TestMail"));
+        app.submitContactCreation();
+        app.goToHomePage();
     }
 
 }
