@@ -13,45 +13,32 @@ public class ApplicationManager {
 
   FirefoxDriver wd;
 
+  private SessionHelper sessionHelper;
   private NavigationHelper navigationHelper;
   private ContactHelper contactHelper;
   private GroupHelper groupHelper;
 
-  public static boolean isAlertPresent(FirefoxDriver wd) {
-    try {
-      wd.switchTo().alert();
-      return true;
-    } catch (NoAlertPresentException e) {
-      return false;
-    }
-  }
+
 
   public void init() {
     wd = new FirefoxDriver();
     wd.manage().timeouts().implicitlyWait(600, TimeUnit.SECONDS);
     wd.get("http://localhost/addressbook/group.php");
+    sessionHelper = new SessionHelper(wd);
     groupHelper = new GroupHelper(wd);
     contactHelper = new ContactHelper(wd);
     navigationHelper = new NavigationHelper(wd);
-    login("admin", "secret");
+    sessionHelper.login("admin", "secret");
   }
 
-  private void login(String username, String password) {
-    wd.findElement(By.name("user")).click();
-    wd.findElement(By.name("user")).clear();
-    wd.findElement(By.name("user")).sendKeys(username);
-    wd.findElement(By.name("pass")).click();
-    wd.findElement(By.name("pass")).clear();
-    wd.findElement(By.name("pass")).sendKeys(password);
-    wd.findElement(By.xpath("//form[@id='LoginForm']/input[3]")).click();
-  }
+
 
   public void stop() {
     wd.quit();
   }
 
   public void closeAlertWindow() {
-      wd.switchTo().alert().accept();
+    wd.switchTo().alert().accept();
   }
 
   public GroupHelper getGroupHelper() {
