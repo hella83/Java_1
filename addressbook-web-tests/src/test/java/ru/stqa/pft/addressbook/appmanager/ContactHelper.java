@@ -19,9 +19,8 @@ public class ContactHelper extends BaseHelper{
     super(wd);
   }
 
-  public void selectContact() {
-    click(By.name("selected[]"));
-
+  public void selectContact(int index) {
+    wd.findElements(By.name("selected[]")).get(index).click();
   }
 
   public void submitContactCreation() {
@@ -52,8 +51,12 @@ public class ContactHelper extends BaseHelper{
     click(By.xpath("//div[@id='content']/form[2]/div[2]/input"));
   }
 
-  public void initContactModification() {
-    click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
+  public void initContactModification(int index) {
+    click(By.xpath("//table[@id='maintable']/tbody/tr["+index+"]/td[8]/a/img"));
+
+    //click(By.xpath(".//img[@title='Edit']"));
+
+    //click(By.tagName("Edit"));
   }
 
   public void submitContactmodification() {
