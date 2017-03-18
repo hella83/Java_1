@@ -45,6 +45,14 @@ public class ContactHelper extends BaseHelper{
     }
   }
 
+  public void modifyContact(int index, ContactData contact) {
+    selectContact(index-1);
+    initContactModification(index +1);
+    fillContactForm(contact, false);
+    submitContactmodification();
+    //getNavigationHelper().goToHomePage();
+  }
+
   public void gotoAddNew() {
 
     click(By.linkText("add new"));
