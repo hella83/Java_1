@@ -131,4 +131,14 @@ public class ContactHelper extends BaseHelper{
             .withHomephone(homephone).withMobilephone(mobilephone).withWorkphone(workphone);
   }
 
+  public String infoFromDetailsForm(ContactData contact) {
+    initContactShowDetails(contact.getId());
+    String details = wd.findElement(By.cssSelector("div [id='content']")).getText();
+    wd.navigate().back();
+    return details;
+  }
+
+  private void initContactShowDetails(int id) {
+    click(By.cssSelector("div a[href=\"view.php?id=" + id + "\"]"));
+  }
 }
