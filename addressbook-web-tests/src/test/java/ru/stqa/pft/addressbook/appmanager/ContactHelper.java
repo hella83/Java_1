@@ -38,8 +38,10 @@ public class ContactHelper extends BaseHelper{
     type(By.name("home"), contactData.getHomephone());
     type(By.name("email"), contactData.getEmail());
 
-    if (creation){
-      new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+    if (creation) {
+      if (contactData.getGroup() != null) {
+        new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+      }
     } else {
       Assert.assertFalse(isElementPresent(By.name("new_group")));
     }
