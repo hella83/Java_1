@@ -10,9 +10,19 @@ public class ContactData {
   private  String workphone;
   private  String email;
   private String group;
+  private  String allphones;
 
   public ContactData withId(int id) {
     this.id = id;
+    return this;
+  }
+
+  public String getAllphones() {
+    return allphones;
+  }
+
+  public ContactData withAllphones(String allphones) {
+    this.allphones = allphones;
     return this;
   }
 

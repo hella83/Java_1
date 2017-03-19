@@ -100,10 +100,10 @@ public class ContactHelper extends BaseHelper{
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("id"));
       String fname = element.findElement(By.xpath(".//td[3]")).getText();
       String lname = element.findElement(By.xpath(".//td[2]")).getText();
-      String[] phones = element.findElement(By.xpath(".//td[6]")).getText().split("\n");
+      String  allphones = element.findElement(By.xpath(".//td[6]")).getText();
 
       contacts.add(new ContactData().withId(id).withFirstName(fname).withLastName(lname)
-      .withHomephone(phones[0]).withMobilephone(phones[1]).withWorkphone(phones[2]));
+      .withAllphones(allphones));
     }
     return contacts;
   }
