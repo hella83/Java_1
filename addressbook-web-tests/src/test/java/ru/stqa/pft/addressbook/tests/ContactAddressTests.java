@@ -31,14 +31,13 @@ public class ContactAddressTests extends TestBase {
     ContactData contact = app.contact().all().iterator().next();
     ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
 
-    //assertThat(contact.getAllphones(), equalTo(mergePhones(contactInfoFromEditForm)));
+    assertThat(cleaned(contact.getAddress()), equalTo(cleaned(contactInfoFromEditForm.getAddress())));
+
 
   }
 
-
-
-  public static String cleaned (String phone){
-    return phone.replaceAll("\\s","").replaceAll("[-()]","");
+  public static String cleaned (String address){
+    return address.replaceAll("\\s","").replaceAll("[-()]","");
   }
 }
 
