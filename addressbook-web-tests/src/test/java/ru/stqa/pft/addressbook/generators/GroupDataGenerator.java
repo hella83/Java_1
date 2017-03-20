@@ -19,12 +19,13 @@ public class GroupDataGenerator {
     File file  = new File(args[1]);
 
     List<GroupData> groups = generateGroups(count);
+    System.out.println(groups);
     save(groups, file);
     
   }
 
   private static void save(List<GroupData> groups, File file) throws IOException {
-    System.out.println(new File(".").getAbsolutePath());
+    //System.out.println(new File(".").getAbsolutePath());
     Writer writer = new FileWriter(file);
     for (GroupData group : groups){
       writer.write(String.format("%s;%s;%s\n", group.getName(), group.getHeader(),group.getFooter()));
@@ -38,6 +39,6 @@ public class GroupDataGenerator {
       groups.add(new GroupData().withName(String.format("Test %s", i))
               .withHeader(String.format("header %s", i)).withFooter(String.format("footer %s", i)));
     }
-    return  null;
+    return  groups;
   }
 }
