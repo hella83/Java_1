@@ -1,3 +1,4 @@
-FirstName 0;LastName 0;Address 0
-FirstName 1;LastName 1;Address 1
-FirstName 2;LastName 2;Address 2
+FirstName 0;LastName 0;Address 0;11-10;0@mail.ru;src\test\resources\test.png
+FirstName 1;LastName 1;Address 1;11-11;1@mail.ru;src\test\resources\test.png
+FirstName 2;LastName 2;Address 2;11-12;2@mail.ru;src\test\resources\test.png
+FirstName 3;LastName 3;Address 3;11-13;3@mail.ru;src\test\resources\test.png

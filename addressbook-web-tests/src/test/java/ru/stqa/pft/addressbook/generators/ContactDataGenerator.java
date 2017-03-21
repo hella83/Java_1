@@ -26,16 +26,19 @@ public class ContactDataGenerator {
   private static void save(List<ContactData> contacts, File file) throws IOException {
     Writer writer = new FileWriter(file);
     for (ContactData contact : contacts){
-      writer.write(String.format("%s;%s;%s\n", contact.getFirstname(), contact.getLastname(),contact.getAddress()));
+      writer.write(String.format("%s;%s;%s;%s;%s;%s\n", contact.getFirstname(), contact.getLastname()
+              ,contact.getAddress(),contact.getHomephone(), contact.getEmail(), contact.getPhoto()));
     }
     writer.close();
   }
 
   private static List<ContactData> generateContact(int count) {
     List<ContactData> contacts = new ArrayList<>();
+    File photo = new File("src/test/resources/test.png");
     for (int i=0; i < count; i++){
       contacts.add(new ContactData().withFirstName(String.format("FirstName %s", i))
-              .withLastName(String.format("LastName %s", i)).withAddress(String.format("Address %s", i)));
+              .withLastName(String.format("LastName %s", i)).withAddress(String.format("Address %s", i))
+              .withHomephone(String.format("11-1%s", i)).withEmail(String.format("%s@mail.ru", i)).withPhoto(photo));
     }
     return  contacts;
   }
