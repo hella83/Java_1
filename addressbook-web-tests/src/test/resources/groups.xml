@@ -9,44 +9,4 @@
     <header>header 1</header>
     <footer>footer 1</footer>
   </group>
-  <group>
-    <name>Test 2</name>
-    <header>header 2</header>
-    <footer>footer 2</footer>
-  </group>
-  <group>
-    <name>Test 3</name>
-    <header>header 3</header>
-    <footer>footer 3</footer>
-  </group>
-  <group>
-    <name>Test 4</name>
-    <header>header 4</header>
-    <footer>footer 4</footer>
-  </group>
-  <group>
-    <name>Test 5</name>
-    <header>header 5</header>
-    <footer>footer 5</footer>
-  </group>
-  <group>
-    <name>Test 6</name>
-    <header>header 6</header>
-    <footer>footer 6</footer>
-  </group>
-  <group>
-    <name>Test 7</name>
-    <header>header 7</header>
-    <footer>footer 7</footer>
-  </group>
-  <group>
-    <name>Test 8</name>
-    <header>header 8</header>
-    <footer>footer 8</footer>
-  </group>
-  <group>
-    <name>Test 9</name>
-    <header>header 9</header>
-    <footer>footer 9</footer>
-  </group>
 </list>
