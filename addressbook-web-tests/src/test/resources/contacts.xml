@@ -15,28 +15,4 @@
     <email>1@mail.ru</email>
     <photo>src\test\resources\test.png</photo>
   </contact>
-  <contact>
-    <firstname>FirstName 2</firstname>
-    <lastname>LastName 2</lastname>
-    <address>Address 2</address>
-    <homephone>11-12</homephone>
-    <email>2@mail.ru</email>
-    <photo>src\test\resources\test.png</photo>
-  </contact>
-  <contact>
-    <firstname>FirstName 3</firstname>
-    <lastname>LastName 3</lastname>
-    <address>Address 3</address>
-    <homephone>11-13</homephone>
-    <email>3@mail.ru</email>
-    <photo>src\test\resources\test.png</photo>
-  </contact>
-  <contact>
-    <firstname>FirstName 4</firstname>
-    <lastname>LastName 4</lastname>
-    <address>Address 4</address>
-    <homephone>11-14</homephone>
-    <email>4@mail.ru</email>
-    <photo>src\test\resources\test.png</photo>
-  </contact>
-</list>
+ </list>
