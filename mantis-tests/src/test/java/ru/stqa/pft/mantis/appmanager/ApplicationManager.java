@@ -51,4 +51,11 @@ public class ApplicationManager {
     wd.switchTo().alert().accept();
   }
 
+  public HttpSession newSession(){
+    return new HttpSession(this);
+  }
+
+  public String getProperty(String s) {
+    return properties.getProperty(s);
+  }
 }
