@@ -5,7 +5,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 
-import javax.swing.*;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
@@ -24,6 +23,9 @@ public class ApplicationManager {
   private RegistrationHelper registrationHelper;
   private FtpHelper ftp;
   private MailHelper mailHelper;
+  private ChangePassHelper changePass;
+
+
 
   public ApplicationManager(String browser)  {
     this.browser = browser;
@@ -58,6 +60,13 @@ public class ApplicationManager {
       registrationHelper = new RegistrationHelper(this);
     }
     return registrationHelper;
+  }
+
+  public ChangePassHelper changePass() {
+    if (changePass == null) {
+      changePass = new ChangePassHelper(this);
+    }
+    return changePass;
   }
 
   public FtpHelper ftp() {
