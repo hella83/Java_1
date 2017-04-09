@@ -43,6 +43,7 @@ public class ContactInGroupsTests extends TestBase{
     app.goTo().home();
     app.contact().addInGroup(selectedContact, selectedGroup);
     //Contacts after = app.db().contacts();
+    app.goTo().home();
 
     //assertEquals(after.size(), before.size());
 
