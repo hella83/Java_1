@@ -34,7 +34,7 @@ public class SoapHelper {
              .collect(Collectors.toSet());
     }
 
-    private MantisConnectPortType getMantisConnect() throws ServiceException, MalformedURLException {
+    public MantisConnectPortType getMantisConnect() throws ServiceException, MalformedURLException {
         return new MantisConnectLocator().
                     getMantisConnectPort(new URL("http://localhost/mantisbt-1.2.19/api/soap/mantisconnect.php"));
     }
@@ -56,20 +56,5 @@ public class SoapHelper {
                 .withName(createdIssueData.getProject().getName()));
     }
 
-    public boolean isIssueOpen(int issueId) throws MalformedURLException, ServiceException, RemoteException {
-        MantisConnectPortType mc = getMantisConnect();
-        IssueData selectedIssueData = mc.mc_issue_get("administrator", "root", BigInteger.valueOf(issueId));
-        if (selectedIssueData.getResolution().getName().equals("fixed"))
-            return false;
-        else {
-            return true;
-        }
 
-    }
-
-    public void skipIfNotFixed(int issueId) throws RemoteException, ServiceException, MalformedURLException {
-        if (isIssueOpen(issueId)) {
-            throw new SkipException("Ignored because of issue " + issueId);
-        }
-    }
 }
