@@ -1,6 +1,8 @@
 package ru.stqa.pft.mantis.appmanager;
 
 import biz.futureware.mantis.rpc.soap.client.*;
+import org.testng.Assert;
+import org.testng.SkipException;
 import ru.stqa.pft.mantis.model.Issue;
 import ru.stqa.pft.mantis.model.Project;
 
@@ -52,5 +54,22 @@ public class SoapHelper {
                 .withSummary(createdIssueData.getSummary()).withDescription(createdIssueData.getDescription())
                 .withProject(new Project().withId(createdIssueData.getProject().getId().intValue())
                 .withName(createdIssueData.getProject().getName()));
+    }
+
+    public boolean isIssueOpen(int issueId) throws MalformedURLException, ServiceException, RemoteException {
+        MantisConnectPortType mc = getMantisConnect();
+        IssueData selectedIssueData = mc.mc_issue_get("administrator", "root", BigInteger.valueOf(issueId));
+        if (selectedIssueData.getResolution().getName().equals("fixed"))
+            return false;
+        else {
+            return true;
+        }
+
+    }
+
+    public void skipIfNotFixed(int issueId) throws RemoteException, ServiceException, MalformedURLException {
+        if (isIssueOpen(issueId)) {
+            throw new SkipException("Ignored because of issue " + issueId);
+        }
     }
 }
