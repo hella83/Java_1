@@ -24,10 +24,6 @@ public class ContactInGroupsTests extends TestBase{
       app.goTo().home();
       app.contact().create(new ContactData().withFirstName("FName1").withLastName("LName1").withGroup("test1"));
     }
-  }
-
-  @BeforeMethod
-  public void ensurePreconditions2(){
     if (app.db().groups().size() == 0){
       app.goTo().groupPage();
       app.group().create(new GroupData().withName("test1134561"));
@@ -37,8 +33,9 @@ public class ContactInGroupsTests extends TestBase{
   @Test
   public void testContactAddGroups(){
     Contacts beforeC = app.db().contacts();
-    ContactData selectedContact = beforeC.iterator().next();
     Groups beforeG = app.db().groups();
+    ContactData selectedContact = beforeC.iterator().next();
+
     GroupData selectedGroup = beforeG.iterator().next();
     app.goTo().home();
     app.contact().addInGroup(selectedContact, selectedGroup);
