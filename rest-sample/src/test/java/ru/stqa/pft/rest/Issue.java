@@ -8,14 +8,18 @@ public class Issue {
     private int id;
     private String subject;
     private String description;
+    private String state_name;
 
     public int getId() {
         return id;
     }
 
     public String getState() {
+        return state_name;
     }
 
+    public Issue withState(String state_name) {
+        this.state_name = state_name;
         return this;
     }
 
