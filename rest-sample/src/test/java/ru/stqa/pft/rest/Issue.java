@@ -13,6 +13,12 @@ public class Issue {
         return id;
     }
 
+    public String getState() {
+    }
+
+        return this;
+    }
+
     public Issue withId(int id) {
         this.id = id;
         return this;
