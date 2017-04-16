@@ -154,4 +154,18 @@ public class ContactHelper extends BaseHelper{
     new Select(wd.findElement(By.name("to_group"))).selectByVisibleText(group.getName());
     click(By.cssSelector("input[name='add']"));
   }
+
+  public void deleteFromGroup(ContactData contact, GroupData group) {
+    selectGroup(group);
+    selectContactById(contact.getId());
+    removeFromGroup();
+  }
+
+  private void removeFromGroup() {
+    click(By.cssSelector("input[name='remove']"));
+  }
+
+  private void selectGroup(GroupData group) {
+    new Select(wd.findElement(By.name("group"))).selectByVisibleText(group.getName());
+  }
 }

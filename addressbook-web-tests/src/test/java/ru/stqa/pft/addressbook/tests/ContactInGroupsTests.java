@@ -30,21 +30,21 @@ public class ContactInGroupsTests extends TestBase{
 
   @Test
   public void testContactAddGroups() {
-    Contacts beforeContacts = app.db().contacts();
-    ContactData selectedContact = beforeContacts.iterator().next();
-    Groups contactInGroups = selectedContact.getGroups();
-    Groups beforeGroups = app.db().groups();
-    GroupData selectedGroup = beforeGroups.iterator().next();
-    if (contactInGroups.size() != 0) {
-      if (beforeGroups.equals(contactInGroups)) {
+    Contacts contactsBefore = app.db().contacts();
+    ContactData selectedContact = contactsBefore.iterator().next();
+    Groups contactGroupsBefore = selectedContact.getGroups();
+    Groups groupsBefore = app.db().groups();
+    GroupData selectedGroup = groupsBefore.iterator().next();
+    if (contactGroupsBefore.size() != 0) {
+      if (groupsBefore.equals(contactGroupsBefore)) {
         app.goTo().groupPage();
         GroupData group = new GroupData().withName("test1134561335");
         app.group().create(group);
         selectedGroup = group.withId(app.db().groups().stream().mapToInt((g) -> g.getId()).max().getAsInt());
         System.out.println(selectedGroup);
       } else {
-        Groups diff = beforeGroups;
-        for (GroupData group : contactInGroups) {
+        Groups diff = groupsBefore;
+        for (GroupData group : contactGroupsBefore) {
             diff = diff.without(group);
         }
         selectedGroup = diff.iterator().next();
@@ -52,35 +52,39 @@ public class ContactInGroupsTests extends TestBase{
       }
       app.goTo().home();
       app.contact().addInGroup(selectedContact, selectedGroup);
-      app.goTo().home();
-      Contacts afterContacts = app.db().contacts();
-      Groups contactInGroupsAfter = null;
-      for ( ContactData contact : afterContacts ) {
+      Contacts contactsAfter = app.db().contacts();
+      Groups contactGroupsAfter = null;
+      for ( ContactData contact : contactsAfter ) {
       if (contact.equals(selectedContact)){
-        contactInGroupsAfter = contact.getGroups();
+        contactGroupsAfter = contact.getGroups();
      }
    }
-    System.out.println(contactInGroupsAfter);
-    System.out.println(selectedGroup);
-    System.out.println(contactInGroups);
-    System.out.println(contactInGroups.withAdded(selectedGroup));
-      assertThat(contactInGroupsAfter, equalTo(contactInGroups.withAdded(selectedGroup)));
-
-
+    assertThat(contactGroupsAfter, equalTo(contactGroupsBefore.withAdded(selectedGroup)));
     }
 
-  @Test(enabled = false)
+  @Test
   public void testContactDeleteGroups(){
-    Contacts beforeC = app.db().contacts();
-    ContactData selectedContact = beforeC.iterator().next();
-    Groups beforeG = app.db().groups();
-    GroupData selectedGroup = beforeG.iterator().next();
+    Contacts contactsBefore = app.db().contacts();
+    ContactData selectedContact = contactsBefore.iterator().next();
+    Groups contactGroupsBefore = selectedContact.getGroups();
+    Groups groupsBefore = app.db().groups();
+    GroupData selectedGroup = groupsBefore.iterator().next();
+    if (contactGroupsBefore.size() == 0) {
+      app.goTo().home();
+      app.contact().addInGroup(selectedContact, selectedGroup);
+      contactGroupsBefore = contactGroupsBefore.withAdded(selectedGroup);
+    } else {
+      selectedGroup = contactGroupsBefore.iterator().next();
+    }
     app.goTo().home();
-    app.contact().addInGroup(selectedContact, selectedGroup);
-    //Contacts after = app.db().contacts();
-
-    //assertEquals(after.size(), before.size());
-
-    //assertThat(after, equalTo(before.without(selectedContact).withAdded(contact)));
+    app.contact().deleteFromGroup(selectedContact, selectedGroup);
+    Contacts contactsAfter = app.db().contacts();
+    Groups contactGroupsAfter = null;
+    for ( ContactData contact : contactsAfter ) {
+      if (contact.equals(selectedContact)){
+        contactGroupsAfter = contact.getGroups();
+      }
+    }
+    assertThat(contactGroupsAfter, equalTo(contactGroupsBefore.without(selectedGroup)));
   }
 }
