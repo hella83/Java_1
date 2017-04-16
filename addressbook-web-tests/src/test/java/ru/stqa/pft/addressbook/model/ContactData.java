@@ -6,6 +6,8 @@ import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.io.File;
+import java.util.HashSet;
+import java.util.Set;
 
 @XStreamAlias("contact")
 @Entity
@@ -51,14 +53,17 @@ public class ContactData {
   private  String email3;
 
   @Transient
-  private String group;
-  @Transient
   private  String allphones;
   @Transient
   private  String allemails;
   @Column(name = "photo")
   @Type(type = "text")
   private String photo;
+
+  @ManyToMany(fetch = FetchType.EAGER)
+  @JoinTable(name = "address_in_groups",
+          joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name = "group_id"))
+  private Set<GroupData> groups = new HashSet<GroupData>();
 
   public ContactData withId(int id) {
     this.id = id;
@@ -150,10 +155,6 @@ public class ContactData {
     return this;
   }
 
-  public ContactData withGroup(String group) {
-    this.group = group;
-    return this;
-  }
 
   public int getId() {
     return id;
@@ -186,7 +187,9 @@ public class ContactData {
     return email;
   }
 
-  public String getGroup() { return group;  }
+  public Groups getGroups() {
+    return new Groups(groups);
+  }
 
   @Override
   public String toString() {
@@ -209,8 +212,7 @@ public class ContactData {
     if (lastname != null ? !lastname.equals(that.lastname) : that.lastname != null) return false;
     if (address != null ? !address.equals(that.address) : that.address != null) return false;
     if (homephone != null ? !homephone.equals(that.homephone) : that.homephone != null) return false;
-    if (email != null ? !email.equals(that.email) : that.email != null) return false;
-    return group != null ? group.equals(that.group) : that.group == null;
+    return email != null ? email.equals(that.email) : that.email == null;
   }
 
   @Override
@@ -221,7 +223,6 @@ public class ContactData {
     result = 31 * result + (address != null ? address.hashCode() : 0);
     result = 31 * result + (homephone != null ? homephone.hashCode() : 0);
     result = 31 * result + (email != null ? email.hashCode() : 0);
-    result = 31 * result + (group != null ? group.hashCode() : 0);
     return result;
   }
 }
